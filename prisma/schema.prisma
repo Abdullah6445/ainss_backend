@@ -1,0 +1,182 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role{
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum Section{
+  A
+  B
+}
+
+enum Month {
+  JANUARY
+  FEBRUARY
+  MARCH
+  APRIL
+  MAY
+  JUNE
+  JULY
+  AUGUST
+  SEPTEMBER
+  OCTOBER
+  NOVEMBER
+  DECEMBER
+}
+
+
+model User {
+  id Int @id @default(autoincrement())
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  age Int
+  fatherName String
+  emergencyContact String?
+  role Role
+  admin Admin?
+  teacher Teacher?
+  student Student?
+
+}
+
+model Admin{
+  adminId Int @id @default(autoincrement())
+  
+  
+  userId Int @unique
+  
+  user User @relation(fields: [userId], references: [id])
+}
+
+
+model Teacher{
+  teacherId Int @id @default(autoincrement())
+  
+  
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+  class Class?
+
+}
+
+
+model Class {
+  classId Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  className String
+  classSection Section
+  teacherId Int @unique
+  teacher Teacher @relation(fields: [teacherId], references:[teacherId])
+  student Student[]   
+}
+
+model Student{
+  studentId Int @id @default(autoincrement()) 
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+  classId Int @unique
+  class Class @relation(fields: [classId], references: [classId])
+  feesId Int @unique
+  fees Fees @relation(fields: [feesId], references: [feesId])
+  attendanceId Int @unique
+  attendance Attendance @relation(fields: [attendanceId], references: [attendanceId])
+  
+}
+
+model Fees{
+  feesId Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  fees_month Month
+  fees_year String
+  fees_total_amount Float
+  fees_remaining_amount Float
+  fess_paid_on DateTime
+  Student Student[]
+}
+
+
+model Attendance{
+  attendanceId Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  attendance_date DateTime @unique
+  student Student[]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// model User {
+//   id String @id @default(cuid())
+//   name String
+//   age Int
+//   fatherName String
+//   emergencyContact String?
+//   role Role
+//   teacher Teacher?
+//   student Student?
+// }
+
+
+// model Teacher{
+//   id String @id @default(cuid())
+//   userId String @unique
+//   user User @relation(fields: [userId], references: [id])
+// }
+
+// model Student{
+//   id String @id @default(cuid())
+//   userId String @unique
+//   user User @relation(fields: [userId], references: [id])
+//   class
+// }
+
+// model Class {
+//   classId String @id @unique @default(cuid())
+//   name String @unique
+//   section Section
+//   students Student[]
+// }
