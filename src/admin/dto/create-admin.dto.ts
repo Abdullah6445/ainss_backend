@@ -1,43 +1,27 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsEnum, IsInt, IsOptional, IsString } from "class-validator";
-import { Role } from "generated/prisma";
+import { Type } from "class-transformer";
+import { IsString, ValidateNested } from "class-validator";
+import { CreateUserDto } from "src/user/dto/create-user.dto";
 
 export class CreateAdminDto {
 
-
-  // @ApiProperty({example: "Abdullah"})
-
-
-  @ApiProperty({example: "Abdulah"})
-  @IsString()
-  name: string;
-
-  
-  @ApiProperty({example: 24})
-  @IsInt()
-  age: number;
-
-  @ApiProperty({example: "Abdulah"})
-  @IsString()
-  fatherName : string;
-
-  @ApiProperty({example: "121231" , required: false})
-  @IsString()
-  @IsOptional()
-  contact : string;
-  
-  @ApiProperty({example: "121231" , required: false})
-  @IsString()
-  @IsOptional()
-  emergencyContact : string;
-
-  @ApiProperty({enum: Role, example: Role.ADMIN})
-  @IsEnum(Role)
-  role : Role;
-
   @ApiProperty({example: "abdullah@gmail.com"})
-  @IsEmail()
-  email: String
+  @IsString()
+  email: string;
+
+  @ApiProperty({example: "password"})
+  @IsString()
+  password: string;
+
+  @ApiProperty({type: CreateUserDto})
+  @ValidateNested()
+  @Type(()=>CreateUserDto)
+  user: CreateUserDto;
+
+  
+  
+  
+  
 
 
 

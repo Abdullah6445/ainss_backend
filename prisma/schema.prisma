@@ -44,8 +44,7 @@ enum Month {
 model User {
   id Int @id @default(autoincrement())
   
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  
   name String
   age Int
   fatherName String
@@ -60,7 +59,9 @@ model User {
 
 model Admin{
   adminId Int @id @default(autoincrement())
-  email String 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email String @unique
   password String 
   userId Int @unique
   
@@ -70,6 +71,8 @@ model Admin{
 
 model Teacher{
   teacherId Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   
   
   userId Int @unique
@@ -92,6 +95,8 @@ model Class {
 
 model Student{
   studentId Int @id @default(autoincrement()) 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   userId Int @unique
   user User @relation(fields: [userId], references: [id])
   classId Int @unique
