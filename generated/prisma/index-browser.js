@@ -127,6 +127,7 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   age: 'age',
   fatherName: 'fatherName',
+  contact: 'contact',
   emergencyContact: 'emergencyContact',
   role: 'role'
 };
@@ -189,6 +190,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   name: 'name',
   fatherName: 'fatherName',
+  contact: 'contact',
   emergencyContact: 'emergencyContact'
 };
 

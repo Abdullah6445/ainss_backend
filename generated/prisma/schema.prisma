@@ -48,6 +48,7 @@ model User {
   name             String
   age              Int
   fatherName       String
+  contact          String?
   emergencyContact String?
   role             Role
   admin            Admin?

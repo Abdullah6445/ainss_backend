@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  // output   = "../generated/prisma"
 }
 
 datasource db {
@@ -49,6 +49,7 @@ model User {
   name String
   age Int
   fatherName String
+  contact String?
   emergencyContact String?
   role Role
   admin Admin?
@@ -59,11 +60,11 @@ model User {
 
 model Admin{
   adminId Int @id @default(autoincrement())
-  
-  
+  email String 
+  password String 
   userId Int @unique
   
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 
@@ -72,7 +73,7 @@ model Teacher{
   
   
   userId Int @unique
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   class Class?
 
 }
@@ -98,7 +99,7 @@ model Student{
   feesId Int @unique
   fees Fees @relation(fields: [feesId], references: [feesId])
   attendanceId Int @unique
-  attendance Attendance @relation(fields: [attendanceId], references: [attendanceId])
+  attendance Attendance @relation(fields: [attendanceId], references: [attendanceId], onDelete: Cascade)
   
 }
 

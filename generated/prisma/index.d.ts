@@ -1523,6 +1523,7 @@ export namespace Prisma {
     name: string | null
     age: number | null
     fatherName: string | null
+    contact: string | null
     emergencyContact: string | null
     role: $Enums.Role | null
   }
@@ -1534,6 +1535,7 @@ export namespace Prisma {
     name: string | null
     age: number | null
     fatherName: string | null
+    contact: string | null
     emergencyContact: string | null
     role: $Enums.Role | null
   }
@@ -1545,6 +1547,7 @@ export namespace Prisma {
     name: number
     age: number
     fatherName: number
+    contact: number
     emergencyContact: number
     role: number
     _all: number
@@ -1568,6 +1571,7 @@ export namespace Prisma {
     name?: true
     age?: true
     fatherName?: true
+    contact?: true
     emergencyContact?: true
     role?: true
   }
@@ -1579,6 +1583,7 @@ export namespace Prisma {
     name?: true
     age?: true
     fatherName?: true
+    contact?: true
     emergencyContact?: true
     role?: true
   }
@@ -1590,6 +1595,7 @@ export namespace Prisma {
     name?: true
     age?: true
     fatherName?: true
+    contact?: true
     emergencyContact?: true
     role?: true
     _all?: true
@@ -1688,6 +1694,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact: string | null
     emergencyContact: string | null
     role: $Enums.Role
     _count: UserCountAggregateOutputType | null
@@ -1718,6 +1725,7 @@ export namespace Prisma {
     name?: boolean
     age?: boolean
     fatherName?: boolean
+    contact?: boolean
     emergencyContact?: boolean
     role?: boolean
     admin?: boolean | User$adminArgs<ExtArgs>
@@ -1734,11 +1742,12 @@ export namespace Prisma {
     name?: boolean
     age?: boolean
     fatherName?: boolean
+    contact?: boolean
     emergencyContact?: boolean
     role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "age" | "fatherName" | "emergencyContact" | "role", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "age" | "fatherName" | "contact" | "emergencyContact" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | User$adminArgs<ExtArgs>
     teacher?: boolean | User$teacherArgs<ExtArgs>
@@ -1759,6 +1768,7 @@ export namespace Prisma {
       name: string
       age: number
       fatherName: string
+      contact: string | null
       emergencyContact: string | null
       role: $Enums.Role
     }, ExtArgs["result"]["user"]>
@@ -2139,6 +2149,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly age: FieldRef<"User", 'Int'>
     readonly fatherName: FieldRef<"User", 'String'>
+    readonly contact: FieldRef<"User", 'String'>
     readonly emergencyContact: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
   }
@@ -8478,6 +8489,7 @@ export namespace Prisma {
     name: 'name',
     age: 'age',
     fatherName: 'fatherName',
+    contact: 'contact',
     emergencyContact: 'emergencyContact',
     role: 'role'
   };
@@ -8567,6 +8579,7 @@ export namespace Prisma {
   export const UserOrderByRelevanceFieldEnum: {
     name: 'name',
     fatherName: 'fatherName',
+    contact: 'contact',
     emergencyContact: 'emergencyContact'
   };
 
@@ -8654,6 +8667,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     age?: IntFilter<"User"> | number
     fatherName?: StringFilter<"User"> | string
+    contact?: StringNullableFilter<"User"> | string | null
     emergencyContact?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
@@ -8668,6 +8682,7 @@ export namespace Prisma {
     name?: SortOrder
     age?: SortOrder
     fatherName?: SortOrder
+    contact?: SortOrderInput | SortOrder
     emergencyContact?: SortOrderInput | SortOrder
     role?: SortOrder
     admin?: AdminOrderByWithRelationInput
@@ -8686,6 +8701,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     age?: IntFilter<"User"> | number
     fatherName?: StringFilter<"User"> | string
+    contact?: StringNullableFilter<"User"> | string | null
     emergencyContact?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     admin?: XOR<AdminNullableScalarRelationFilter, AdminWhereInput> | null
@@ -8700,6 +8716,7 @@ export namespace Prisma {
     name?: SortOrder
     age?: SortOrder
     fatherName?: SortOrder
+    contact?: SortOrderInput | SortOrder
     emergencyContact?: SortOrderInput | SortOrder
     role?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -8719,6 +8736,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"User"> | string
     age?: IntWithAggregatesFilter<"User"> | number
     fatherName?: StringWithAggregatesFilter<"User"> | string
+    contact?: StringNullableWithAggregatesFilter<"User"> | string | null
     emergencyContact?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
@@ -9073,6 +9091,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -9087,6 +9106,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminUncheckedCreateNestedOneWithoutUserInput
@@ -9100,6 +9120,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -9114,6 +9135,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUncheckedUpdateOneWithoutUserNestedInput
@@ -9128,6 +9150,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
   }
@@ -9138,6 +9161,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
@@ -9149,6 +9173,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
@@ -9554,6 +9579,7 @@ export namespace Prisma {
     name?: SortOrder
     age?: SortOrder
     fatherName?: SortOrder
+    contact?: SortOrder
     emergencyContact?: SortOrder
     role?: SortOrder
   }
@@ -9570,6 +9596,7 @@ export namespace Prisma {
     name?: SortOrder
     age?: SortOrder
     fatherName?: SortOrder
+    contact?: SortOrder
     emergencyContact?: SortOrder
     role?: SortOrder
   }
@@ -9581,6 +9608,7 @@ export namespace Prisma {
     name?: SortOrder
     age?: SortOrder
     fatherName?: SortOrder
+    contact?: SortOrder
     emergencyContact?: SortOrder
     role?: SortOrder
   }
@@ -10693,6 +10721,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     teacher?: TeacherCreateNestedOneWithoutUserInput
@@ -10706,6 +10735,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     teacher?: TeacherUncheckedCreateNestedOneWithoutUserInput
@@ -10734,6 +10764,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     teacher?: TeacherUpdateOneWithoutUserNestedInput
@@ -10747,6 +10778,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     teacher?: TeacherUncheckedUpdateOneWithoutUserNestedInput
@@ -10759,6 +10791,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -10772,6 +10805,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminUncheckedCreateNestedOneWithoutUserInput
@@ -10822,6 +10856,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -10835,6 +10870,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUncheckedUpdateOneWithoutUserNestedInput
@@ -10959,6 +10995,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminCreateNestedOneWithoutUserInput
@@ -10972,6 +11009,7 @@ export namespace Prisma {
     name: string
     age: number
     fatherName: string
+    contact?: string | null
     emergencyContact?: string | null
     role: $Enums.Role
     admin?: AdminUncheckedCreateNestedOneWithoutUserInput
@@ -11066,6 +11104,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUpdateOneWithoutUserNestedInput
@@ -11079,6 +11118,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     age?: IntFieldUpdateOperationsInput | number
     fatherName?: StringFieldUpdateOperationsInput | string
+    contact?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     admin?: AdminUncheckedUpdateOneWithoutUserNestedInput
